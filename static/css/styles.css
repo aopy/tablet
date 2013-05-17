@@ -1,0 +1,137 @@
+/* Site Styles */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-family: Georgia;
+    font-size: 14px;
+    text-shadow: 0 1px 0 rgba(255,255,255,.50);
+    padding: 50px;
+    margin: 0 0 30px;
+
+}
+
+.container {
+
+    width:100%;
+}
+
+.leftcol {
+    float:left;
+    width:450px;
+}
+
+.centercol {
+    margin:0 auto;
+    width:200px;
+
+}
+
+.rightcol {
+    float:right;
+    width:300px;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+}
+
+h1 {
+    line-height: 56px;
+    font-weight: bold;
+}
+
+h2, h3 {
+    font-weight: bold;
+    color: #996600;
+}
+
+/* Django Comments Form CSS */
+
+#id_honeypot, label[for="id_honeypot"] {
+    display: none;
+}
+
+
+/* Lavalamp Menu CSS */
+
+.lavalamp {
+    position: relative;
+    border: 1px solid #d6d6d6;
+    background: #fff;
+    padding: 15px;
+    -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+    -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+    border-radius : 10px;
+    -moz-border-radius : 10px;
+    -webkit-border-radius : 10px;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgb(240,240,240)), to(rgb(204,204,204)));
+    background: -moz-gradient(linear, left top, left bottom, from(rgb(240,240,240)), to(rgb(204,204,204)));
+    height: 18px;
+}
+
+.cyan {
+    background: rgb(64,181,197);
+    background: -webkit-gradient(linear, left top, left bottom, from(rgb(64,181,197)), to(rgb(7,165,187)));
+    background: -moz-gradient(linear, left top, left bottom, from(rgb(64,181,197)), to(rgb(7,165,187)));
+    border: 1px solid #2f8893;
+	
+}
+
+.cyan li a {
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.40);	
+}
+
+
+a {
+    text-decoration: none;
+    color: #00008B;
+    line-height: 20px;
+    font-weight: bold;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    z-index: 300;
+    position: absolute;
+}
+
+
+ul li {
+    list-style: none;
+    float:left;
+    text-align: center;
+}
+
+
+ul li a {
+    padding: 0 20px;
+    text-align: center;
+}
+
+/* Animiertes Element */
+
+.floatr {
+    position: absolute;
+    top: 10px;
+    z-index: 50;
+    width: 70px;
+    height: 30px;
+    border-radius : 8px;
+    -moz-border-radius : 8px;
+    -webkit-border-radius : 8px;
+    background: rgba(0,0,0,.20);
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+}
+
+

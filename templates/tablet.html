@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+
+{% block left %}
+{% load enslug %}
+{% load thumbnail %}
+{% load comments %}
+
+<h2>{{ tablet_name }}</h2>
+<p>{{ tablet_intro }}</p>
+<p>{{ tablet_info }}</p>
+
+<p><strong>İşletim Sistemi: </strong>{{ tablet_os }}</p>
+
+<p><a href="{% url tabletpc.views.show_brand tablet_brand|slugify %}">{{ tablet_brand }}</a></p>
+
+<p><a href="{{ tablet_link }}">Resmi Sitesi</a></p>
+
+{% for item in tablet_pic %}
+{% if item %}
+<a href="{{ item.url }}">
+    <img src="{{ item|thumbnail }}" alt="pic" />
+</a> 
+{% endif %}
+{% endfor %}
+
+<p><strong>{{ tablet_name }} ile ilgili haberler:</strong></p>
+
+{% for item in tablet_news %}
+<p><a href="{% url tabletpc.views.news_detail item|enslug %}">{{ item }}</a></p>
+{% endfor %}
+
+<br />
+
+{% get_comment_count for tabletpc as comment_count %}
+<h3>{{ tablet_name }} ile ilgili yorumlar ({{ comment_count }}):</h3>
+<hr>
+{% render_comment_list for tabletpc %} 
+
+{% get_comment_form for tabletpc as form %}
+<table>
+<form action="{% comment_form_target %}" method="post">
+{% csrf_token %}
+{{ form }}
+<input type="hidden" name="next" value="{{ request.get_full_path }}"/>
+<tr>
+<td colspan="2" style="text-align: center">
+<input type="submit" name="submit" value="Gönder">
+<input type="submit" name="preview" value="Önizleme">
+</td>
+</tr>
+</form>
+</table>
+{% endblock left %}
+

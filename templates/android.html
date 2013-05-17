@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block menu %}
+<li><a href="{% url tabletpc.views.show %}">Ana Sayfa</a></li>
+<li><a href="{% url tabletpc.views.news_all %}">Haberler</a></li>
+<li class="active"><a href="{% url tabletpc.views.show_android %}">Android</a></li>
+<li><a href="{% url tabletpc.views.show_brand 'Apple'|slugify %}">Apple</a></li>
+{% endblock menu %}
+
+{% block left %}
+{% load enslug %}
+<h2>Android Tabletler</h2>
+{% for item in tablets %}
+<p><a href="{% url tabletpc.views.tablet_detail item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+
+{% if tablet_news %}
+<h3>Android Tabletler ile ilgili Haberler:</h3>
+{% endif %}
+
+{% for item in tablet_news %}
+<p><a href="{% url tabletpc.views.news_detail item|enslug %}">{{ item }}</a></p>
+{% endfor %}
+{% endblock left %}
+
+
+

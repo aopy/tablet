@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+
+{% block menu %}
+<li><a href="{% url tabletpc.views.show %}">Ana Sayfa</a></li>
+<li class="active"><a href="{% url tabletpc.views.news_all %}">Haberler</a></li>
+<li><a href="{% url tabletpc.views.show_android %}">Android</a></li>
+<li><a href="{% url tabletpc.views.show_brand 'Apple'|slugify %}">Apple</a></li>
+{% endblock menu %}
+
+{% block left %}
+{% load thumbnail %}
+<h2>{{ news_title }}</h2>
+<em>{{ news_date }}</em>
+<p>{{ news_intro }}</p>
+<p>{{ news_text }}</p>
+
+{% for item in news_pic %}
+{% if item %}
+<a href="{{ item.url }}">
+    <img src="{{ item|thumbnail }}" alt="pic"  /> 
+</a> 
+{% endif %}
+{% endfor %}
+
+<br />
+
+{% for item in news_brand %}
+<p><a href="{% url tabletpc.views.show_brand item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+
+<br />
+
+{% if news_tablet %}
+{% for item in news_tablet %}
+<p><a href="{% url tabletpc.views.tablet_detail item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+{% endif %}
+{% endblock left %}
+
+

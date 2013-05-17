@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block lastnews %}
+{% load enslug %}
+{% if news_title %}
+<h3>Son Haber</h3>
+<a href="{% url tabletpc.views.news_detail news_title|enslug %}">{{ news_title }}</a>
+<p>{{ news_intro }}</p> 
+<hr>
+{% endif %}
+{% endblock lastnews %}
+
+{% block left %}
+<h3>Modeller</h3>
+{% for item in tablets %}
+<p><a href="{% url tabletpc.views.tablet_detail item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+{% endblock left %}
+
+{% block center %}
+<h3>Markalar</h3>
+{% for item in brands %}
+<p><a href="{% url tabletpc.views.show_brand item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+{% endblock center %}

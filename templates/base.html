@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+
+<head>
+<meta charset="utf-8">
+<title>Tablet PC</title>
+
+<link rel="stylesheet" href="{{STATIC_URL}}css/styles.css" />
+<script src="{{STATIC_URL}}js/jquery-1.8.3.min.js"></script>
+<script src="{{STATIC_URL}}js/menu.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+<h1>Tablet PC</h1>
+
+<div class="lavalamp cyan">
+<ul >
+{% block menu %}
+<li class="active"><a href="{% url tabletpc.views.show %}">Ana Sayfa</a></li>
+<li><a href="{% url tabletpc.views.news_all %}">Haberler</a></li>
+<li><a href="{% url tabletpc.views.show_android %}">Android</a></li>
+<li><a href="{% url tabletpc.views.show_brand 'Apple'|slugify %}">Apple</a></li>
+{% endblock menu %}
+<li><a href="">İletişim</a></li>
+</ul>
+<div class="floatr"></div>
+</div>
+
+<br />
+
+{% block lastnews %}{% endblock lastnews %}
+
+<div class="leftcol">
+{% block left %}{% endblock left %}
+</div>
+
+<div class="rightcol">
+<h3>Tablet Ara</h3>
+<form action="" method="get">
+<input id="id_q" name="q" type="text">
+<input type="submit" value="Ara">
+{% if found_entries %}
+<p>"{{ query_string }}" için <strong>{{ found_entries|length }}</strong> sonuç:</p>            
+{% for item in found_entries %}
+<p><a href="{% url tabletpc.views.tablet_detail item|slugify %}">{{ item.name }}</a></p>
+{% endfor %}
+{% endif %}
+{% if query_string and not found_entries %}
+<p>Bulunamadı.</p>
+{% endif %}
+</form>
+</div>
+
+<div class="centercol">
+{% block center %}{% endblock center %}
+</div>
+
+<br />
+
+<div style="clear:both;"></div>
+</div>
+
+<footer><center>Onur Ates - Tablet PC</center></footer>
+
+</body>
+</html>

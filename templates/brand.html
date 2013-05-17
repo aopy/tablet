@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+
+{% block menu %}
+<li ><a href="{% url tabletpc.views.show %}">Ana Sayfa</a></li>
+<li><a href="{% url tabletpc.views.news_all %}">Haberler</a></li>
+{% if name == "Apple" %}
+<li><a href="{% url tabletpc.views.show_android %}">Android</a></li>
+<li class="active"><a href="{% url tabletpc.views.show_brand 'Apple'|slugify %}">Apple</a></li>
+{% else %}
+<li class="active"><a href="{% url tabletpc.views.show_android %}">Android</a></li>
+<li ><a href="{% url tabletpc.views.show_brand 'Apple'|slugify %}">Apple</a></li>
+{% endif %}
+{% endblock menu %}
+
+{% block left %}
+{% load enslug %}
+{% load thumbnail %}
+
+{% if brand_name %}
+<h2>{{ brand_name }}</h2>
+{% endif %}
+
+{% if brand_info %}
+<p>{{ brand_info }}</p>
+{% endif %}
+
+{% if brand_logo %}
+<a href="{{ brand_logo.url }}">
+<img src="{{ brand_logo|thumbnail }}" alt="logo"/>
+</a> 
+{% endif %}
+
+{% for item in brand_tablet %}
+<p><a href="{% url tabletpc.views.tablet_detail item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+
+{% if brand_news %}
+<h3>{{ brand_name }} ile ilgili haberler:</h3>
+{% endif %}
+
+{% for item in brand_news %}
+<p><a href="{% url tabletpc.views.news_detail item|enslug %}">{{ item }}</a></p>
+{% endfor %}
+{% endblock left %}
+
+

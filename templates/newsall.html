@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block menu %}
+<li><a href="{% url tabletpc.views.show %}">Ana Sayfa</a></li>
+<li class="active"><a href="{% url tabletpc.views.news_all %}">Haberler</a></li>
+<li><a href="{% url tabletpc.views.show_android %}">Android</a></li>
+<li><a href="{% url tabletpc.views.show_brand 'Apple'|slugify %}">Apple</a></li>
+{% endblock menu %}
+
+{% block left %}
+{% load enslug %}
+<h2>Haberler</h2>
+{% for item in news %}
+<p><a href="{% url tabletpc.views.news_detail item|enslug %}">{{ item }}</a></p>
+{% endfor %}
+{% endblock left %}
