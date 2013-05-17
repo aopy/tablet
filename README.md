@@ -1,6 +1,6 @@
 'Tablet' ist ein Online-Marketing-Projekt über Tablet-Computer.
 
-Es enthält Produkte/Modelle, Tablet-Computer und Nachrichten. 
+Es enthält Produkte/Modelle, Marken und Nachrichten. 
 
 Das Projekt verwendet Django Version 1.3 (entwickelt auf Ubuntu Linux).
 
