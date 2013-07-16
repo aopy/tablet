@@ -38,9 +38,10 @@ def show(request):
 
 def show_brand(request, name):
     """
-    Gibt den Markennamen, die Information, das Logo, die entsprechenden 
-    Nachrichten und Tablet-Computer; gesucht und gefundene Tablet-Computer 
-    für die Marken-Seite zurück.
+    Gibt den Markennamen, die Information, das Logo, 
+    die entsprechenden Nachrichten und Tablet-Computer; 
+    gesucht und gefundene Tablet-Computer für die
+    Marken-Seite zurück.
     """
 
     try:
@@ -53,7 +54,8 @@ def show_brand(request, name):
         brand_news = News.objects.filter(brand__name=name)
 
     except Brand.DoesNotExist:
-        brand = brand_name = brand_info = brand_logo = brand_tablet = brand_news = None
+        brand = brand_name = brand_info = None
+        brand_logo = brand_tablet = brand_news = None
 
     query_string, found_entries = search(request)
 
