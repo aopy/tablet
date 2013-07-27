@@ -8,4 +8,10 @@ Die anderen Technologien sind: jQuery/JavaScript (für das Menü), CSS (einige C
 
 Hinweis:
 
-Die Django Comments Form in dem Template braucht die 'request' Variable. So in 'settings.py' muss 'django.core.context_processors.request' zu den anderen Default-Prozessoren in den TEMPLATE_CONTEXT_PROCESSORS hinzugefügt werden.
+Die Django Comments Form in dem Template braucht die 'request' Variable. So in 'settings.py' muss 'django.core.context_processors.request' zu den anderen Default-Prozessoren in den TEMPLATE_CONTEXT_PROCESSORS hinzugefügt werden:
+
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)
